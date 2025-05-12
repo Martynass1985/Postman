@@ -1,9 +1,3 @@
-Here’s an upgraded version of your
-
-README.md
-
-file with streamlined instructions, replacing unnecessary steps like global `npm install` commands and focusing on project-specific setup:
-
 ````markdown
 # 🚀 Automation Exercise API Tests
 
