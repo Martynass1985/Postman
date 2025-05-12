@@ -1,0 +1,1079 @@
+{
+	"info": {
+		"_postman_id": "c03c5472-1bfa-4538-9309-339cecda07aa",
+		"name": "Automation Exercise",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41696318"
+	},
+	"item": [
+		{
+			"name": "API 1: Get All Products List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Validate the response for specific properties\", function () {",
+							"    const responseData = pm.response.json();",
+							"    ",
+							"    pm.expect(responseData).to.be.an('object');",
+							"    pm.expect(responseData.responseCode).to.exist.and.be.a('number').and.be.eq(200);",
+							"    pm.expect(responseData.products).to.exist.and.to.be.an('array');",
+							"",
+							"    responseData.products.forEach(function(product) {",
+							"        pm.expect(product.id).to.exist.and.be.a('number');",
+							"        pm.expect(product.name).to.exist.and.be.a('string')",
+							"        pm.expect(product.price).to.exist.and.be.a('string');",
+							"        pm.expect(product.brand).to.exist.and.be.a('string');",
+							"        pm.expect(product.category).to.exist.and.to.be.an('object');",
+							"        pm.expect(product.category.usertype).to.exist.and.to.be.an('object');",
+							"        pm.expect(product.category.usertype.usertype).to.exist.and.be.a('string');",
+							"        pm.expect(product.category.category).to.exist.and.be.a('string');",
+							"    });",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/productsList",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"productsList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API 2: POST To All Products List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response body contains 'responseCode' and 'message' fields\", function () {",
+							"    const responseData = pm.response.json();",
+							"    pm.expect(responseData).to.be.an('object');",
+							"    pm.expect(responseData).to.include.all.keys('responseCode', 'message');",
+							"});",
+							"",
+							"",
+							"pm.test(\"ResponseCode is a number\", function () {",
+							"    const responseData = pm.response.json();",
+							"    pm.expect(responseData.responseCode).to.be.a('number').and.be.eq(405);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Message should be a string\", function () {",
+							"    const responseData = pm.response.json();",
+							"    pm.expect(responseData.message).to.be.a('string').and.be.eq('This request method is not supported.');",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/productsList",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"productsList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API 3: Get All Brands List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {",
+							"    pm.expect(pm.response.code).to.equal(200);",
+							"});",
+							"",
+							"pm.test(\"Validate the structure of 'brands' array\", function () {",
+							"    const responseData = pm.response.json();",
+							"    pm.expect(responseData).to.have.property('responseCode').and.to.be.eq(200);",
+							"    pm.expect(responseData).to.be.an('object');",
+							"    pm.expect(responseData.brands).to.be.an('array');",
+							"    responseData.brands.forEach(function(brand) {",
+							"        pm.expect(brand).to.be.an('object');",
+							"        pm.expect(brand).to.have.property('id').that.is.a('number');",
+							"        pm.expect(brand).to.have.property('brand').that.is.a('string');",
+							"    });",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/brandsList",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"brandsList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API 4: PUT To All Brands List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response body contains 'responseCode' and 'message' fields\", function () {",
+							"    const responseData = pm.response.json();",
+							"    ",
+							"    pm.expect(responseData).to.be.an('object');",
+							"    pm.expect(responseData).to.include.all.keys('responseCode', 'message');",
+							"});",
+							"",
+							"",
+							"pm.test(\"ResponseCode is a number \", function () {",
+							"    const responseData = pm.response.json();",
+							"    pm.expect(responseData.responseCode).to.be.a('number').and.to.be.eq(405);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Message is string and have value 'This request method is not supported.'\", function () {",
+							"    const responseData = pm.response.json();",
+							"    pm.expect(responseData.message).to.be.a('string').and.to.be.eq('This request method is not supported.');",
+							"});",
+							"",
+							"",
+							"pm.test(\"Content has message 'This request method is not supported.'\", function () {",
+							"    const responseData = pm.response.text();",
+							"    pm.expect(responseData).to.include('This request method is not supported.');",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/brandsList",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"brandsList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API 5: POST To Search Product",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const body = request.data;",
+							"pm.collectionVariables.set(\"searchProductValue\", body.search_product);",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Each category contains a t-shirt\", function () {",
+							"    pm.response.json().products.forEach(function(product) {",
+							"        pm.expect(product.category.category.toLowerCase()).to.include(pm.collectionVariables.get(\"searchProductValue\"))",
+							"    });",
+							"});",
+							"",
+							"pm.test(\"Each category property has a usertype and category\", function () {",
+							"    pm.response.json().products.forEach(function(product) {",
+							"        pm.expect(product.category).to.have.property('usertype').that.is.an('object').and.to.have.property('usertype');",
+							"        pm.expect(product.category).to.have.property('category');",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "search_product",
+							"value": "tshirt",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/searchProduct?search_product=tshirt",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"searchProduct"
+					],
+					"query": [
+						{
+							"key": "search_product",
+							"value": "tshirt"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API 6: POST To Search Product without search_product parameter",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content has message\", function () {",
+							"    const responseData = pm.response.text();",
+							"    pm.expect(responseData).to.include('Bad request, search_product parameter is missing in POST request');",
+							"});",
+							"",
+							"pm.test(\"Response body has responseCode 400\", function () {",
+							"    const responseData = pm.response.json();",
+							"    pm.expect(responseData.responseCode).to.equal(400);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "search_product",
+							"value": "tshirt",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/searchProduct",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"searchProduct"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API 11: POST To Create/Register User Account",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {",
+							"  pm.expect(pm.response.code).to.equal(200);",
+							"});",
+							"",
+							"const email = pm.request.body.urlencoded.find(param => param.key === \"email\")?.value;",
+							"const password = pm.request.body.urlencoded.find(param => param.key === \"password\")?.value;",
+							"",
+							"pm.collectionVariables.set(\"email\", email);",
+							"pm.collectionVariables.set(\"password\", password);",
+							"",
+							"pm.test(\"Response has the required fields - responseCode and message\", function () {",
+							"  const responseData = pm.response.json();",
+							"  ",
+							"  pm.expect(responseData).to.be.an('object');",
+							"  pm.expect(responseData).to.have.property('responseCode').and.be.eq(201);",
+							"  pm.expect(responseData).to.have.property('message').and.be.eq('User created!');",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "{{$randomFullName}}",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "{{$randomEmail}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{$randomPassword}}",
+							"type": "text"
+						},
+						{
+							"key": "title",
+							"value": "{{$randomNamePrefix}}",
+							"type": "text"
+						},
+						{
+							"key": "birth_date",
+							"value": "15",
+							"type": "text"
+						},
+						{
+							"key": "birth_month",
+							"value": "12",
+							"type": "text"
+						},
+						{
+							"key": "birth_year",
+							"value": "1985",
+							"type": "text"
+						},
+						{
+							"key": "firstname",
+							"value": "{{$randomFirstName}}",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "{{$randomLastName}}",
+							"type": "text"
+						},
+						{
+							"key": "company",
+							"value": "{{$randomCompanyName}}",
+							"type": "text"
+						},
+						{
+							"key": "address1",
+							"value": "{{$randomStreetName}}",
+							"type": "text"
+						},
+						{
+							"key": "address2",
+							"value": "{{$randomStreetAddress}}",
+							"type": "text"
+						},
+						{
+							"key": "country",
+							"value": "{{$randomCountry}}",
+							"type": "text"
+						},
+						{
+							"key": "zipcode",
+							"value": "{{$randomCountryCode}}",
+							"type": "text"
+						},
+						{
+							"key": "state",
+							"value": "Ontario",
+							"type": "text"
+						},
+						{
+							"key": "city",
+							"value": "{{$randomCity}}",
+							"type": "text"
+						},
+						{
+							"key": "mobile_number",
+							"value": "{{$randomPhoneNumber}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/createAccount",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"createAccount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API 7: POST To Verify Login with valid details",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {",
+							"  pm.expect(pm.response.code).to.equal(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response has responseCode and message\", function () {",
+							"    const responseData = pm.response.json();",
+							"    pm.expect(responseData).to.be.an('object');",
+							"    pm.expect(responseData.responseCode).to.be.a('number').and.to.be.eq(200);",
+							"    pm.expect(responseData.message).to.be.a('string').and.to.be.eq('User exists!');",
+							"});",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "{{email}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/verifyLogin",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"verifyLogin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API 8: POST To Verify Login without email parameter",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {",
+							"  pm.expect(pm.response.code).to.equal(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response has responseCode and message\", function () {",
+							"    const responseData = pm.response.json();",
+							"    pm.expect(responseData).to.be.an('object');",
+							"    pm.expect(responseData.responseCode).to.be.a('number').and.to.be.eq(400);",
+							"    pm.expect(responseData.message).to.be.a('string').and.to.be.eq('Bad request, email or password parameter is missing in POST request.');",
+							"});",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/verifyLogin",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"verifyLogin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API 9: DELETE To Verify Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {",
+							"  pm.expect(pm.response.code).to.equal(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response has responseCode and message\", function () {",
+							"    const responseData = pm.response.json();",
+							"    pm.expect(responseData).to.be.an('object');",
+							"    pm.expect(responseData.responseCode).to.be.a('number').and.to.be.eq(405);",
+							"    pm.expect(responseData.message).to.be.a('string').and.to.be.eq('This request method is not supported.');",
+							"});",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/verifyLogin",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"verifyLogin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API 10: POST To Verify Login with invalid details",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {",
+							"  pm.expect(pm.response.code).to.equal(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response has responseCode and message\", function () {",
+							"    const responseData = pm.response.json();",
+							"    pm.expect(responseData).to.be.an('object');",
+							"    pm.expect(responseData.responseCode).to.be.a('number').and.to.be.eq(404);",
+							"    pm.expect(responseData.message).to.be.a('string').and.to.be.eq('User not found!');",
+							"});",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "aa",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "bb",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/verifyLogin",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"verifyLogin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API 13: PUT METHOD To Update User Account",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// save email and password from body to colletction varianbles for later use",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// save sent body parameters to environment variable",
+							"",
+							"// const formData = pm.request.body.urlencoded.all();",
+							"",
+							"// formData.each(function(item) {",
+							"//     if (item.key !== 'email' && item.key !== 'password') {",
+							"//         pm.collectionVariables.set(`${item.key} updated`, `${item.value}`)};",
+							"// });",
+							"// console.log(\"Form data:\", formData);",
+							"// pm.test(\"Response status code is 200\", function () {",
+							"//   pm.expect(pm.response.code).to.equal(200);",
+							"// });",
+							"",
+							"const formData = pm.request.body.urlencoded.all();",
+							"",
+							"let dataObj = {};",
+							"",
+							"formData.forEach(function(item) {",
+							"    if (item.key !== 'email' && item.key !== 'password') {",
+							"        dataObj[item.key] = item.value;",
+							"    }",
+							"});",
+							"",
+							"pm.collectionVariables.set(\"userUpdateData\", JSON.stringify(dataObj));",
+							"",
+							"console.log(\"Saved JSON object:\", dataObj);",
+							"",
+							"",
+							"pm.test(\"Response has the required fields - responseCode and message\", function () {",
+							"  const responseData = pm.response.json();",
+							"  pm.expect(responseData).to.be.an('object');",
+							"  pm.expect(responseData).to.have.property('responseCode').and.be.eq(200);",
+							"  pm.expect(responseData).to.have.property('message').and.be.eq('User updated!');",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "{{$randomFullName}}",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "{{email}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "text"
+						},
+						{
+							"key": "title",
+							"value": "{{$randomNamePrefix}}",
+							"type": "text"
+						},
+						{
+							"key": "birth_date",
+							"value": "15",
+							"type": "text"
+						},
+						{
+							"key": "birth_month",
+							"value": "12",
+							"type": "text"
+						},
+						{
+							"key": "birth_year",
+							"value": "1985",
+							"type": "text"
+						},
+						{
+							"key": "firstname",
+							"value": "{{$randomFirstName}}",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "{{$randomLastName}}",
+							"type": "text"
+						},
+						{
+							"key": "company",
+							"value": "{{$randomCompanyName}}",
+							"type": "text"
+						},
+						{
+							"key": "address1",
+							"value": "{{$randomStreetName}}",
+							"type": "text"
+						},
+						{
+							"key": "address2",
+							"value": "{{$randomStreetAddress}}",
+							"type": "text"
+						},
+						{
+							"key": "country",
+							"value": "{{$randomCountry}}",
+							"type": "text"
+						},
+						{
+							"key": "zipcode",
+							"value": "{{$randomCountryCode}}",
+							"type": "text"
+						},
+						{
+							"key": "state",
+							"value": "Ontario",
+							"type": "text"
+						},
+						{
+							"key": "city",
+							"value": "{{$randomCity}}",
+							"type": "text"
+						},
+						{
+							"key": "mobile_number",
+							"value": "{{$randomPhoneNumber}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/updateAccount",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"updateAccount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API 14: GET user account detail by email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Validate the response schema for the required fields\", function () {",
+							"  const responseData = pm.response.json();",
+							"",
+							"  pm.expect(responseData).to.be.an('object');",
+							"  pm.expect(responseData.user).to.be.an('object');",
+							"  ",
+							"  const requiredFields = [",
+							"    \"id\", \"name\", \"email\", \"title\", \"birth_day\", \"birth_month\", \"birth_year\",",
+							"    \"first_name\", \"last_name\", \"company\", \"address1\", \"address2\", \"country\",",
+							"    \"state\", \"city\", \"zipcode\"",
+							"  ];",
+							"",
+							"  requiredFields.forEach(field => {",
+							"    pm.expect(responseData.user).to.have.property(field);",
+							"  });",
+							"});",
+							"",
+							"",
+							"const expectedData = JSON.parse(pm.collectionVariables.get(\"userUpdateData\"));",
+							"",
+							"const response = pm.response.json();",
+							"const actualData = response.user;",
+							"",
+							"const keyMap = {",
+							"    birth_date: \"birth_day\",",
+							"    firstname: \"first_name\",",
+							"    lastname: \"last_name\"",
+							"};",
+							"",
+							"const ignoreKeys = [\"email\", \"mobile_number\", \"id\"];",
+							"",
+							"Object.keys(expectedData).forEach(function(key) {",
+							"    const responseKey = keyMap[key] || key;",
+							"",
+							"    if (!ignoreKeys.includes(responseKey)) {",
+							"        pm.test(`Field '${key}' matches response '${responseKey}'`, function () {",
+							"            pm.expect(actualData[responseKey]).to.eql(expectedData[key]);",
+							"        });",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseUrl}}/getUserDetailByEmail?email={{email}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"getUserDetailByEmail"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "{{email}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API 12: DELETE METHOD To Delete User Account",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {",
+							"  pm.expect(pm.response.code).to.equal(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response has responseCode and message\", function () {",
+							"    const responseData = pm.response.json();",
+							"    pm.expect(responseData).to.be.an('object');",
+							"    pm.expect(responseData.responseCode).to.be.a('number').and.to.be.eq(200);",
+							"    pm.expect(responseData.message).to.be.a('string').and.to.be.eq('Account deleted!');",
+							"});",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "{{email}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/deleteAccount",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"deleteAccount"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://automationexercise.com/api",
+			"type": "string"
+		},
+		{
+			"key": "searchProductValue",
+			"value": ""
+		},
+		{
+			"key": "email",
+			"value": ""
+		},
+		{
+			"key": "password",
+			"value": ""
+		},
+		{
+			"key": "userUpdateData",
+			"value": ""
+		}
+	]
+}
