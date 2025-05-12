@@ -1,4 +1,4 @@
-name: Run Postman Tests with Newman
+name: Run Postman Tests with HTML Report
 
 on:
   push:
@@ -7,30 +7,32 @@ on:
     branches: [main]
 
 jobs:
-  test:
+  run-tests:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
+      - name: Install Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "18"
 
-      - name: Install Newman and HTML Reporter
-        run: npm install -g newman newman-reporter-html
-
-      - name: Run Newman tests
+      - name: Install Newman and HTML reporter
         run: |
-          newman run postman/AutomationExercise.postman_collection.json \
-            --environment postman/environment.json \
-            --reporters cli,html \
-            --reporter-html-export newman/report.html
+          npm install -g newman
+          npm install -g newman-reporter-html
 
-      - name: Upload HTML Report
-        uses: actions/upload-artifact@v2
+          - name: Run Newman tests
+          run: |
+            newman run postman/AutomationExercise.postman_collection.json \
+              --environment postman/environment.json \
+              --reporters cli,html \
+              --reporter-html-export newman/report.html
+
+      - name: Upload HTML report as artifact
+        uses: actions/upload-artifact@v4
         with:
-          name: newman-report
+          name: postman-html-report
           path: newman/report.html
