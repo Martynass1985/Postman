@@ -16,7 +16,9 @@
 
 ---
 
-![Automation Exercise](https://www.automationexercise.com/static/images/home/logo.png)
+<p align="center">
+  <img src="https://via.placeholder.com/800x400.png?text=Automation+Exercise+Logo" alt="Automation Exercise">
+</p>
 
 ---
 
