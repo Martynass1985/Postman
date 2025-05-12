@@ -1,0 +1,24 @@
+{
+  "name": "postman",
+  "version": "1.0.0",
+  "description": "````markdown # 🚀 Automation Exercise API Tests",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Martynass1985/Postman.git"
+  },
+  "keywords": [],
+  "author": "Maratt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Martynass1985/Postman/issues"
+  },
+  "homepage": "https://github.com/Martynass1985/Postman#readme",
+  "dependencies": {
+    "newman": "^4.6.1",
+    "newman-reporter-html": "^1.0.5"
+  }
+}
