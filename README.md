@@ -1,4 +1,3 @@
-````markdown
 ### 🚀 Automation Exercise API Tests
 
 This repository contains API tests for the Automation Exercise platform, implemented using Postman and executed via GitHub Actions.
@@ -9,13 +8,18 @@ This repository contains API tests for the Automation Exercise platform, impleme
 
 ## 📚 Table of Contents
 
+- [📚 Table of Contents](#-table-of-contents)
 - [✨ Features](#-features)
 - [📋 Prerequisites](#-prerequisites)
 - [⚙️ Installation](#️-installation)
 - [▶️ How to Run](#️-how-to-run)
+  - [Locally](#locally)
+  - [CI/CD (GitHub Actions)](#cicd-github-actions)
 - [🛠️ Setup Tests](#️-setup-tests)
 - [📂 Project Structure](#-project-structure)
 - [📝 Example Tests](#-example-tests)
+  - [Test Case: Verify Login without Email Parameter](#test-case-verify-login-without-email-parameter)
+  - [Test Case: Delete User Account](#test-case-delete-user-account)
 - [📜 License](#-license)
 - [📧 Contact](#-contact)
 
@@ -44,6 +48,7 @@ This repository contains API tests for the Automation Exercise platform, impleme
    git clone https://github.com/your-username/your-repo.git
    cd your-repo
    ```
+
 ````
 
 2. Install dependencies:
@@ -164,3 +169,4 @@ For questions or feedback, please contact:
 ```
 
 ```
+````
