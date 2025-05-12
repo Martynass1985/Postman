@@ -1,8 +1,22 @@
-### 🚀 Automation Exercise API Tests
+<p align="center">
+  <img src="https://www.postman.com/_ar-assets/images/postman-logo-stacked.svg" alt="Postman Logo" width="200">
+</p>
 
-This repository contains API tests for the Automation Exercise platform, implemented using Postman and executed via GitHub Actions.
+<h1 align="center">🚀 Automation Exercise API Tests</h1>
 
-![Automation Exercise](https://www.automationexercise.com/api_list)
+<p align="center">
+  This repository contains API tests for the Automation Exercise platform, implemented using Postman and executed via GitHub Actions.
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Postman-API%20Testing-orange?style=for-the-badge&logo=postman" alt="Postman Badge">
+  <img src="https://img.shields.io/badge/CI-GitHub%20Actions-blue?style=for-the-badge&logo=githubactions" alt="GitHub Actions Badge">
+  <img src="https://img.shields.io/badge/Reports-HTML-green?style=for-the-badge&logo=html5" alt="HTML Reports Badge">
+</p>
+
+---
+
+![Automation Exercise](https://www.automationexercise.com/static/images/home/logo.png)
 
 ---
 
