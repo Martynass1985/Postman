@@ -1,5 +1,5 @@
 ````markdown
-# 🚀 Automation Exercise API Tests
+### 🚀 Automation Exercise API Tests
 
 This repository contains API tests for the Automation Exercise platform, implemented using Postman and executed via GitHub Actions.
 
