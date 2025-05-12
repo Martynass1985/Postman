@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://www.postman.com/_ar-assets/images/postman-logo-stacked.svg" alt="Postman Logo" width="200">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/c/c2/Postman_%28software%29.png" alt="Postman Logo" width="200">
 </p>
 
 <h1 align="center">🚀 Automation Exercise API Tests</h1>
