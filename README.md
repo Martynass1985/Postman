@@ -180,10 +180,4 @@ For questions or feedback, please contact:
 - **Email:** marat19@gmail.com
 - **GitHub:** [your-username](https://github.com/Martynass1985)
 
-```
-
-```
-
-```
-
-```
+---
