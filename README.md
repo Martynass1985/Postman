@@ -17,7 +17,9 @@
 ---
 
 <p align="center">
-  <img src="https://www.automationexercise.com/static/images/home/logo.png" alt="Automation Exercise">
+  <a href="https://www.automationexercise.com/api_list" target="_blank">
+    <img src="https://www.automationexercise.com/static/images/home/logo.png" alt="Automation Exercise">
+  </a>
 </p>
 
 ---
@@ -177,10 +179,6 @@ For questions or feedback, please contact:
 - **Name:** Martynas
 - **Email:** marat19@gmail.com
 - **GitHub:** [your-username](https://github.com/Martynass1985)
-
----
-
-![Test Report](https://via.placeholder.com/800x400.png?text=Sample+HTML+Test+Report)
 
 ```
 
